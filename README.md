@@ -60,9 +60,11 @@ Description:
 ---------------------------------------------------------
 4. Code Review - TestAutomation.cs
 ---------------------------------------------------------
-Few points mentioned below are initial observations. Additional issues may surface upon executing and validating the code using the xUnit framework. Currently, my test environment is configured with NUnit, so I was unable to fully validate the xUnit-specific behavior. However, I can perform a complete validation if needed—please allow some additional time to set up the appropriate framework
-• Line 112 has empty curly braces – The BatchMessages test doesn’t check or confirm anything. Every unit test should include checks (called assertions) to make sure the code works as expected.
-• LoraxSQS is used as both a class-level variable and a local variable in some tests – This can be confusing and might cause mistakes, especially in bigger projects. It's better to use one consistently to avoid errors.
+Few points mentioned below are initial observations. Additional issues may surface upon executing and validating the code using the xUnit framework. Currently, my test environment is configured with NUnit, 
+so I was unable to fully validate the xUnit-specific behavior. However, I can perform a complete validation if needed—please allow some additional time to set up the appropriate framework
+
+1. Line 112 has empty curly braces – The BatchMessages test doesn’t check or confirm anything. Every unit test should include checks (called assertions) to make sure the code works as expected.
+2. LoraxSQS is used as both a class-level variable and a local variable in some tests – This can be confusing and might cause mistakes, especially in bigger projects. It's better to use one consistently to avoid errors.
 
 ---------------------------------------------------------
 5. Hosting Information
