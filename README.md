@@ -1,48 +1,75 @@
-# Automation Testing
+﻿README - Automation Testing by Rupa Mandal
+==========================================
 
-The source repository hosting this test is read-only.  
-Before you begin, you will need to import it into your own hosted repository.  
+This document outlines the automated testing tasks completed by Rupa Mandal, covering three key areas: SQS automation, JSON processing, and calculator unit testing, along with code review feedback.
 
-## SQS Automation Testing
+Frameworks Used:
+- Newtonsoft.Json
+- NUnit
+- NUnit3TestAdapter
 
-Set up an AWS SQS queue (either in a real AWS account or using the local SQS emulator).
-Write an automated test script in a programming language of your choice (e.g., Python, Java, C#) to perform the following tasks:
-Send a message to the SQS queue.
-Receive the message from the SQS queue.
-Verify that the received message matches the sent message.
-Ensure that the test script handles any potential errors or exceptions gracefully.
-Use appropriate AWS SDK or libraries for interacting with SQS (e.g., boto3 for Python, AWS SDK for Java, AWS SDK for .NET).
-Implement assertions or validation checks to verify the correctness of the test results.
+Tools Used:
+- Language: C#
 
-## JSON Automation Testing
+How to Test:
+- Go to Menu - Test
+- Click Test Explorer 
+- Run-all 
 
-There is a JSON file in the project called Cost Analysis.json
-It contains an array of objects
-Build a class that could be used to deserialize a single object from that array
-Within JSONTest.cs
+---------------------------------------------------------
+1. SQS Automation Testing
+---------------------------------------------------------
+Encountered setup challenges that prevented completing SQS Testing.
+Additional time would required to resolve/troubleshoot issues and finalize the implementation. Below are few issues
+- Docker & LocalStack Installation Issues - It was not running/setup properly
+- AWS Credentials - Alternatevely did not had the credential for this one
+- LocalStack Connectivity or Port Conflicts
 
-- Instantiate a list of the object you have defined
-- Deserialise the json file into your list
-- Newtonsoft.json has been installed for this purpose
-- Write to Assert how many items are in your list
+---------------------------------------------------------
+2. JSON Automation Testing
+---------------------------------------------------------
+Description:
+- A file named `Cost Analysis.json` contains an array of cost objects.
+- A custom class `JSONTest.cs` was coaded to deserialize individual JSON objects.
+- Implemented unit tests to verify content and logic incluing positive, Negative and edge case scenarios.
 
-Using LINQ:
+Steps Implemented:
+- Used `Newtonsoft.Json` for deserialization.
+- Deserialized the JSON into a list of defined objects.
+- Used LINQ to:
+  • Assert the number of items in the list.
+  • Retrieve the item with the highest cost and assert its CountryId.
+  • Calculate and assert the total cost for the year 2016.
 
-- Get the top item ordered by Cost descending, and write to Assert the CountryId.
-- Sum Cost for 2016 and write to Assert the total.
+---------------------------------------------------------
+3. Calculator Automation Testing
+---------------------------------------------------------
+Description:
+- A `Calculator` class was available/implemented with basic arithmetic methods:
+  • Add
+  • Subtract
+  • Multiply
+  • Divide
+  • Square
+  • Squareroot
 
-## Calculator Automation Testing
+- Unit tests were written using [e.g., NUnit for C#] to validate:
+  • Correct results for positive, negative, and zero values.
+  • Proper handling of edge cases (e.g., division by zero).
 
-Implement unit tests for a simple calculator class.
-Requirements:
-Create a Calculator class with methods for basic arithmetic operations: addition, subtraction, multiplication, and division.
-Implement unit tests to verify the correctness of each arithmetic operation method.
-Use a unit testing framework compatible with the programming language of your choice (e.g., JUnit for Java, NUnit for C#, pytest for Python).
-Ensure that each method is tested for various input scenarios, including positive and negative numbers, zero, and edge cases.
+---------------------------------------------------------
+4. Code Review - TestAutomation.cs
+---------------------------------------------------------
+Few points mentioned below are initial observations. Additional issues may surface upon executing and validating the code using the xUnit framework. Currently, my test environment is configured with NUnit, so I was unable to fully validate the xUnit-specific behavior. However, I can perform a complete validation if needed—please allow some additional time to set up the appropriate framework
+• Line 112 has empty curly braces – The BatchMessages test doesn’t check or confirm anything. Every unit test should include checks (called assertions) to make sure the code works as expected.
+• LoraxSQS is used as both a class-level variable and a local variable in some tests – This can be confusing and might cause mistakes, especially in bigger projects. It's better to use one consistently to avoid errors.
 
-## TestAutomation.cs
+---------------------------------------------------------
+5. Hosting Information
+---------------------------------------------------------
+The completed solution is hosted at:
+https://github.com/rupa251989/InterviewTestQA
 
-From the file (TestAutomation.cs) given, can you find any problems in the code?
-
-## Finish
-Please let us know where you have hosted your solution!
+---------------------------------------------------------
+Prepared by:
+Rupa Mandal
